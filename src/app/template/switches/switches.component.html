@@ -1,0 +1,87 @@
+<h2>Templade: <small>Switches</small></h2>
+<hr>
+
+
+<form #miFormulario="ngForm">
+
+    <!-- Radios -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Genero</label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input  type="radio"
+                        class="form-check-input"
+                        name="radioGenero"
+                        id="radioMasculino"
+                        value="M"
+                        required
+                        [(ngModel)]="personas.genero">
+
+                <label class="form-check-label" for="radioMasculino">
+                    Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input  type="radio"
+                        class="form-check-input"
+                        name="radioGenero"
+                        id="radioFemenino"
+                        value="F"
+                        required
+                        [(ngModel)]="personas.genero">
+
+                <label class="form-check-label" for="radioFemenino">
+                    Femenino
+                </label>
+            </div>
+        </div>
+    </div>
+
+     <!-- Switches -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9">
+            <div class="custom-control custom-switch mt-2">
+                <input  type="checkbox"
+                        class="custom-control-input"
+                        id="notificaciones"
+                        [(ngModel)]="personas.notificaciones"
+                        name="notificaciones">
+                <label class="custom-control-label" for="notificaciones">Quiero recibir notificaciones</label>
+              </div>
+        </div>
+    </div>
+
+    <!-- Check Box -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Terminos</label>
+        <div class="col-sm-9">
+            <div class="custom-control custom-checkbox">
+                <input  type="checkbox"
+                        class="custom-control-input"
+                        name="terminos"
+                        [(ngModel)]="terminos"
+                        id="terminos"
+                        required>
+                <label class="custom-control-label" for="terminos">Terminos y condiciones</label>
+              </div>
+        </div>
+    </div>
+
+    <!-- Boton submit -->
+    <div class="row">
+        <div class="col">
+            <button [disabled]="miFormulario.invalid" type="" class="btn btn-primary float-right">Guardar</button>
+        </div>
+    </div>
+
+</form>
+
+
+<span>Valor Fomulario</span>
+<pre>{{miFormulario.value | json}}</pre>
+<br>
+
+<span>Valid: {{miFormulario.valid}}</span>
+<br>
+<span>Condiciones:</span>
