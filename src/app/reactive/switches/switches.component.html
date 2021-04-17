@@ -1,1 +1,83 @@
-<p>switches works!</p>
+<h2>Reactive: <small>Switches</small></h2>
+<hr>
+
+
+<form  [formGroup]="miFormulario" (ngSubmit)=guardar()>
+
+    <!-- Radios -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Genero</label>
+        <div class="col-sm-9">
+            <div class="form-check">
+                <input  type="radio"
+                        class="form-check-input"
+                        formControlName="genero"
+                        id="radioMasculino"
+                        value="M">
+
+                <label class="form-check-label" for="radioMasculino">
+                    Masculino
+                </label>
+            </div>
+            <div class="form-check">
+                <input  type="radio"
+                        class="form-check-input"
+                        formControlName="genero"
+                        id="radioFemenino"
+                        value="F">
+
+                <label class="form-check-label" for="radioFemenino">
+                    Femenino
+                </label>
+            </div>
+        </div>
+    </div>
+
+     <!-- Switches -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Notificaciones</label>
+        <div class="col-sm-9">
+            <div class="custom-control custom-switch mt-2">
+                <input  type="checkbox"
+                        formControlName="notificaciones"
+                        class="custom-control-input"
+                        id="notificaciones">
+                <label class="custom-control-label" for="notificaciones">Quiero recibir notificaciones</label>
+              </div>
+        </div>
+    </div>
+
+    <!-- Check Box -->
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Terminos</label>
+        <div class="col-sm-9">
+            <div class="custom-control custom-checkbox">
+                <input  type="checkbox"
+                        formControlName="condiciones"
+                        class="custom-control-input"
+                        id="terminos">
+                <label class="custom-control-label" for="terminos">Terminos y condiciones</label>
+              </div>
+        </div>
+    </div>
+
+    <!-- Boton submit -->
+    <div class="row">
+        <div class="col">
+            <button type="submit" class="btn btn-primary float-right">Guardar</button>
+        </div>
+    </div>
+
+</form>
+
+
+<span>Valor Fomulario</span>
+<pre>{{miFormulario.value | json}}</pre>
+<br>
+
+<span>Valid: {{miFormulario.valid}}</span>
+<br>
+<span>Persona:</span>
+<span>Valid: {{persona | json}}</span>
+<br>
+
