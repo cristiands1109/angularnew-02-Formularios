@@ -1,0 +1,129 @@
+<h2>Validaciones Reactivas</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+
+        <!-- FORMULARIO -->
+         <form autocomplete="off" [formGroup]="miFormulario" (ngSubmit)="crear()">
+
+             <!-- NOMBRE -->
+             <div class="row mb-3">
+                 
+                 <label class="col-sm-3 col-form-label">Nombre</label>
+                 <div class="col-sm-9">
+                     <input type="text" 
+                            placeholder="Nombre del Usuario" 
+                            class="form-control"
+                            formControlName="nombre">
+                            <small  class="form-text text-danger" 
+                                    *ngIf="validar('nombre')">
+                                        Debe ser en formato de nombre y apellido
+                            </small>
+                 </div>
+
+             </div>
+
+             <!-- EMAIL -->
+             <div class="row mb-3">
+
+                 <label class="col-sm-3 col-form-label">Email</label>
+                 <div class="col-sm-9">
+                     <input type="email" 
+                            placeholder="Email del Usuario" 
+                            class="form-control"
+                            formControlName="email">
+                            <small  class="form-text text-danger" 
+                                    *ngIf="validar('email')">
+                                        {{emailErrorMensaje}}
+                            </small>
+                            <!-- <small  class="form-text text-danger" 
+                                    *ngIf="emailFormato()">
+                                        El correo no tiene formato de correo
+                            </small>
+                            <small  class="form-text text-danger" 
+                                    *ngIf="emailTomado()">
+                                        El correo ingresado ya existe
+                            </small> -->
+                 </div>
+
+             </div>
+
+             <!-- USERNAME -->
+             <div class="row mb-3">
+
+                 <label class="col-sm-3 col-form-label">Username</label>
+                 <div class="col-sm-9">
+                     <input type="text" 
+                            placeholder="Nombre codigo del usuario" 
+                            class="form-control"
+                            formControlName="username">
+                        <small  class="form-text text-danger" 
+                                *ngIf="validar('username')">
+                                El usuario no puede ser chena
+                        </small>
+                 </div>
+
+             </div>
+
+             <!-- PASSWORD -->
+             <div class="row mb-3">
+
+                 <label class="col-sm-3 col-form-label">Password</label>
+                 <div class="col-sm-9">
+                     <input type="password" 
+                            placeholder="password" 
+                            class="form-control"
+                            formControlName="password">
+                        <small  class="form-text text-danger" 
+                                *ngIf="validar('password')">
+                                El password debe ser mayor a 6 caracteres
+                        </small>
+                 </div>
+
+             </div>
+
+             <!-- PASSWORD CONFIRMAR -->
+             <div class="row mb-3">
+
+                 <label class="col-sm-3 col-form-label">Confirmar</label>
+                 <div class="col-sm-9">
+                     <input type="password" 
+                            placeholder="Confirmar password" 
+                            class="form-control"
+                            formControlName="password2">
+                        <small  class="form-text text-danger" 
+                                *ngIf="validar('password2')">
+                                Las contrasenas deben de coincidir
+                        </small>
+                 </div>
+
+             </div>
+
+             <div class="row">
+                 <div class="col">
+                     <button class="btn btn-primary float-right" type="submit" [disabled]="miFormulario.pending">
+                         Crear
+                     </button>
+                 </div>
+             </div>
+
+         </form>
+
+    </div>
+</div>
+
+
+
+<br>
+Pruebas
+<hr>
+<strong>FormValid</strong>
+<pre>{{miFormulario.valid}}</pre>
+
+<strong>Forms Error</strong>
+<pre>nombre: {{miFormulario.controls.nombre.errors | json}}</pre>
+<pre>email: {{miFormulario.controls.email.errors | json}}</pre>
+<pre>username: {{miFormulario.controls.username.errors | json}}</pre>
+<pre>password: {{miFormulario.controls.password.errors | json}}</pre>
+<pre>password2: {{miFormulario.controls.password2.errors | json}}</pre>
